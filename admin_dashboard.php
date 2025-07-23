@@ -104,7 +104,6 @@ $conn->close();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - ABC Hospital</title>
     <?php echo getCommonCSS(); ?>
-    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -216,7 +215,7 @@ $conn->close();
             z-index: 2;
         }
 
-        .dashboard-container {
+        .container.dashboard-container {
             max-width: 1400px;
             margin: -30px auto 0;
             padding: 0 20px 60px;
@@ -286,20 +285,6 @@ $conn->close();
             font-size: 0.9em;
         }
 
-        .section-card {
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-            margin-bottom: 40px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
-        }
-
         .section-title {
             background: linear-gradient(135deg, #2c3e50, #34495e);
             color: white;
@@ -313,11 +298,25 @@ $conn->close();
             gap: 15px;
         }
 
+        .card {
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            margin-bottom: 40px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
         .form-container {
             padding: 40px 30px;
         }
 
-        .form-subtitle {
+        .form-container h3 {
             color: #2c3e50;
             font-size: 1.3em;
             font-weight: 600;
@@ -325,6 +324,13 @@ $conn->close();
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+
+        .form-container h3::before {
+            content: '\f055';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #3498db;
         }
 
         .grid-form {
@@ -429,7 +435,7 @@ $conn->close();
             background: #f8f9fa;
         }
 
-        .list-title {
+        .list-container h3 {
             color: #2c3e50;
             font-size: 1.3em;
             font-weight: 600;
@@ -439,10 +445,11 @@ $conn->close();
             gap: 10px;
         }
 
-        .table-responsive {
-            overflow-x: auto;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        .list-container h3::before {
+            content: '\f03a';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: #3498db;
         }
 
         table {
@@ -451,6 +458,7 @@ $conn->close();
             border-collapse: collapse;
             border-radius: 15px;
             overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
 
         thead {
@@ -469,7 +477,7 @@ $conn->close();
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-size: 0.9em;
-            color: #161616ff;
+            color: black;
         }
 
         tbody tr {
@@ -498,78 +506,10 @@ $conn->close();
             animation: slideDown 0.5s ease;
         }
 
-        @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #7f8c8d;
-        }
-
-        .empty-state i {
-            font-size: 4em;
-            margin-bottom: 20px;
-            opacity: 0.5;
-        }
-
-        .floating-action {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background: linear-gradient(135deg, #3498db, #2980b9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5em;
-            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            z-index: 100;
-        }
-
-        .floating-action:hover {
-            transform: scale(1.1);
-            box-shadow: 0 15px 35px rgba(52, 152, 219, 0.6);
-        }
-
-        @media (max-width: 768px) {
-            .dashboard-title {
-                font-size: 2em;
-            }
-            
-            .grid-form {
-                grid-template-columns: 1fr;
-            }
-            
-            .dashboard-stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .navbar {
-                padding: 1rem;
-            }
-            
-            .nav-links {
-                gap: 15px;
-            }
-            
-            .floating-action {
-                bottom: 20px;
-                right: 20px;
-            }
+        .message::before {
+            content: '\f058';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
         }
 
         .tooltip {
@@ -599,6 +539,45 @@ $conn->close();
             visibility: visible;
             opacity: 1;
         }
+
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #7f8c8d;
+        }
+
+        .empty-state i {
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.5;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-title {
+                font-size: 2em;
+            }
+            
+            .grid-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .dashboard-stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .floating-action {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -615,7 +594,7 @@ $conn->close();
         <p class="dashboard-subtitle">Manage Hospital Staff & Operations</p>
     </div>
 
-    <div class="dashboard-container">
+    <div class="container dashboard-container">
         <?php
         if (isset($_SESSION['message'])) {
             echo '<div class="message"><i class="fas fa-check-circle"></i> ' . $_SESSION['message'] . '</div>';
@@ -656,18 +635,12 @@ $conn->close();
         </div>
 
         <!-- Doctors Section -->
-        <div class="section-card">
-            <h2 class="section-title">
-                <i class="fas fa-user-md"></i>
-                Manage Doctors
-            </h2>
+        <div class="card">
+            <h2 class="section-title"><i class="fas fa-user-md"></i> Manage Doctors</h2>
             
             <!-- Add Doctor Form -->
             <div class="form-container">
-                <h3 class="form-subtitle">
-                    <i class="fas fa-plus-circle"></i>
-                    Add New Doctor
-                </h3>
+                <h3><i class="fas fa-plus-circle"></i> Add New Doctor</h3>
                 <form method="POST" class="grid-form">
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Full Name</label>
@@ -703,7 +676,7 @@ $conn->close();
                         <label><i class="fas fa-stethoscope"></i> Specialization</label>
                         <select name="specialization" class="form-control" required>
                             <option value="">Select Specialization</option>
-                            <?php $specializations->data_seek(0); while ($spec = $specializations->fetch_assoc()): ?>
+                            <?php while ($spec = $specializations->fetch_assoc()): ?>
                                 <option value="<?php echo $spec['id']; ?>">
                                     <?php echo htmlspecialchars($spec['title']); ?>
                                 </option>
@@ -731,61 +704,60 @@ $conn->close();
 
             <!-- Doctors List -->
             <div class="list-container">
-                <h3 class="list-title">
-                    <i class="fas fa-list"></i>
-                    Registered Doctors
-                </h3>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th><i class="fas fa-user"></i> Name</th>
-                                <th><i class="fas fa-user-shield"></i> Username</th>
-                                <th><i class="fas fa-envelope"></i> Email</th>
-                                <th><i class="fas fa-phone"></i> Contact</th>
-                                <th><i class="fas fa-stethoscope"></i> Specialization</th>
-                                <th><i class="fas fa-cogs"></i> Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $doctors->data_seek(0); while ($doctor = $doctors->fetch_assoc()): ?>
+                <h3><i class="fas fa-list"></i> Registered Doctors</h3>
+                <?php if ($doctors->num_rows > 0): ?>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($doctor['name']); ?></td>
-                                    <td><?php echo htmlspecialchars($doctor['username']); ?></td>
-                                    <td><?php echo htmlspecialchars($doctor['email']); ?></td>
-                                    <td><?php echo htmlspecialchars($doctor['contactNo']); ?></td>
-                                    <td><?php echo htmlspecialchars($doctor['specialization']); ?></td>
-                                    <td class="action-column">
-                                        <form method="POST" style="display: inline;">
-                                            <input type="hidden" name="doctor_id" value="<?php echo $doctor['id']; ?>">
-                                            <button type="submit" name="delete_doctor" class="btn btn-danger btn-small tooltip" 
-                                                    onclick="return confirm('Are you sure you want to delete Dr. <?php echo htmlspecialchars($doctor['name']); ?>?')">
-                                                <i class="fas fa-trash"></i>
-                                                <span class="tooltiptext">Delete Doctor</span>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th><i class="fas fa-user"></i> Name</th>
+                                    <th><i class="fas fa-user-shield"></i> Username</th>
+                                    <th><i class="fas fa-envelope"></i> Email</th>
+                                    <th><i class="fas fa-phone"></i> Contact</th>
+                                    <th><i class="fas fa-stethoscope"></i> Specialization</th>
+                                    <th><i class="fas fa-cogs"></i> Actions</th>
                                 </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                <?php $doctors->data_seek(0); while ($doctor = $doctors->fetch_assoc()): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($doctor['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($doctor['username']); ?></td>
+                                        <td><?php echo htmlspecialchars($doctor['email']); ?></td>
+                                        <td><?php echo htmlspecialchars($doctor['contactNo']); ?></td>
+                                        <td><?php echo htmlspecialchars($doctor['specialization']); ?></td>
+                                        <td class="action-column">
+                                            <form method="POST" style="display: inline;">
+                                                <input type="hidden" name="doctor_id" value="<?php echo $doctor['id']; ?>">
+                                                <button type="submit" name="delete_doctor" class="btn btn-danger btn-small tooltip" 
+                                                        onclick="return confirm('Are you sure you want to delete Dr. <?php echo htmlspecialchars($doctor['name']); ?>?')">
+                                                    <i class="fas fa-trash"></i>
+                                                    <span class="tooltiptext">Delete Doctor</span>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <div class="empty-state">
+                        <i class="fas fa-user-md"></i>
+                        <h4>No Doctors Found</h4>
+                        <p>No doctors have been registered yet. Add the first doctor using the form above.</p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
 
         <!-- Receptionists Section -->
-        <div class="section-card">
-            <h2 class="section-title">
-                <i class="fas fa-user-tie"></i>
-                Manage Receptionists
-            </h2>
+        <div class="card">
+            <h2 class="section-title"><i class="fas fa-user-tie"></i> Manage Receptionists</h2>
             
             <!-- Add Receptionist Form -->
             <div class="form-container">
-                <h3 class="form-subtitle">
-                    <i class="fas fa-plus-circle"></i>
-                    Add New Receptionist
-                </h3>
+                <h3><i class="fas fa-plus-circle"></i> Add New Receptionist</h3>
                 <form method="POST" class="grid-form">
                     <div class="form-group">
                         <label><i class="fas fa-user"></i> Full Name</label>
@@ -837,43 +809,48 @@ $conn->close();
 
             <!-- Receptionists List -->
             <div class="list-container">
-                <h3 class="list-title">
-                    <i class="fas fa-list"></i>
-                    Registered Receptionists
-                </h3>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th><i class="fas fa-user"></i> Name</th>
-                                <th><i class="fas fa-user-shield"></i> Username</th>
-                                <th><i class="fas fa-envelope"></i> Email</th>
-                                <th><i class="fas fa-phone"></i> Contact</th>
-                                <th><i class="fas fa-cogs"></i> Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $receptionists->data_seek(0); while ($receptionist = $receptionists->fetch_assoc()): ?>
+                <h3><i class="fas fa-list"></i> Registered Receptionists</h3>
+                <?php if ($receptionists->num_rows > 0): ?>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
                                 <tr>
-                                    <td><?php echo htmlspecialchars($receptionist['name']); ?></td>
-                                    <td><?php echo htmlspecialchars($receptionist['username']); ?></td>
-                                    <td><?php echo htmlspecialchars($receptionist['email']); ?></td>
-                                    <td><?php echo htmlspecialchars($receptionist['contactNo']); ?></td>
-                                    <td class="action-column">
-                                        <form method="POST" style="display: inline;">
-                                            <input type="hidden" name="receptionist_id" value="<?php echo $receptionist['id']; ?>">
-                                            <button type="submit" name="delete_receptionist" class="btn btn-danger btn-small tooltip"
-                                                    onclick="return confirm('Are you sure you want to delete <?php echo htmlspecialchars($receptionist['name']); ?>?')">
-                                                <i class="fas fa-trash"></i>
-                                                <span class="tooltiptext">Delete Receptionist</span>
-                                            </button>
-                                        </form>
-                                    </td>
+                                    <th><i class="fas fa-user"></i> Name</th>
+                                    <th><i class="fas fa-user-shield"></i> Username</th>
+                                    <th><i class="fas fa-envelope"></i> Email</th>
+                                    <th><i class="fas fa-phone"></i> Contact</th>
+                                    <th><i class="fas fa-cogs"></i> Actions</th>
                                 </tr>
-                            <?php endwhile; ?>
-                        </tbody>
-                    </table>
-                </div>
+                            </thead>
+                            <tbody>
+                                <?php $receptionists->data_seek(0); while ($receptionist = $receptionists->fetch_assoc()): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($receptionist['name']); ?></td>
+                                        <td><?php echo htmlspecialchars($receptionist['username']); ?></td>
+                                        <td><?php echo htmlspecialchars($receptionist['email']); ?></td>
+                                        <td><?php echo htmlspecialchars($receptionist['contactNo']); ?></td>
+                                        <td class="action-column">
+                                            <form method="POST" style="display: inline;">
+                                                <input type="hidden" name="receptionist_id" value="<?php echo $receptionist['id']; ?>">
+                                                <button type="submit" name="delete_receptionist" class="btn btn-danger btn-small tooltip"
+                                                        onclick="return confirm('Are you sure you want to delete <?php echo htmlspecialchars($receptionist['name']); ?>?')">
+                                                    <i class="fas fa-trash"></i>
+                                                    <span class="tooltiptext">Delete Receptionist</span>
+                                                </button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endwhile; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <div class="empty-state">
+                        <i class="fas fa-user-tie"></i>
+                        <h4>No Receptionists Found</h4>
+                        <p>No receptionists have been registered yet. Add the first receptionist using the form above.</p>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </div>
@@ -932,24 +909,6 @@ $conn->close();
             });
         });
 
-        // Smooth scroll to top
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Show floating action button on scroll
-        window.addEventListener('scroll', function() {
-            const floatingAction = document.querySelector('.floating-action');
-            if (window.scrollY > 300) {
-                floatingAction.style.display = 'flex';
-            } else {
-                floatingAction.style.display = 'none';
-            }
-        });
-
         // Notification system
         function showNotification(message, type = 'success') {
             const notification = document.createElement('div');
@@ -993,6 +952,24 @@ $conn->close();
         `;
         document.head.appendChild(style);
 
+        // Smooth scroll to top
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Show floating action button on scroll
+        window.addEventListener('scroll', function() {
+            const floatingAction = document.querySelector('.floating-action');
+            if (window.scrollY > 300) {
+                floatingAction.style.display = 'flex';
+            } else {
+                floatingAction.style.display = 'none';
+            }
+        });
+
         // Initialize page
         document.addEventListener('DOMContentLoaded', function() {
             // Animate stats on load
@@ -1014,7 +991,7 @@ $conn->close();
             });
             
             // Add stagger animation to cards
-            document.querySelectorAll('.section-card').forEach((card, index) => {
+            document.querySelectorAll('.card').forEach((card, index) => {
                 card.style.opacity = '0';
                 card.style.transform = 'translateY(30px)';
                 setTimeout(() => {

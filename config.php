@@ -1,10 +1,6 @@
 <?php
 session_start();
 
-// Application configuration
-define('BASE_URL', '/abc_hospital_08');
-define('INCLUDED_CONFIG', true);
-
 // Database configuration
 define('DB_HOST', 'localhost');
 define('DB_USER', 'root');
