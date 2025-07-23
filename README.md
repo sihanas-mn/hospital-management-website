@@ -115,17 +115,17 @@ After importing the database, you can use these default accounts:
 
 ### Admin Access
 - **Username**: `admin`
-- **Password**: `admin123`
+- **Password**: `password`
 
 ### Sample Doctor Account
-- **Username**: `doctor1`
-- **Password**: `doctor123`
+- **Username**: `jasath`
+- **Password**: `jasath123`
 
 ### Sample Receptionist Account
-- **Username**: `receptionist1`
-- **Password**: `receptionist123`
+- **Username**: `ahnaf`
+- **Password**: `ahnaf123`
 
-*Note: Please change these default passwords after first login for security.*
+*Note: Please change these default passwords after the first login for security.*
 
 ## 🔐 User Roles & Permissions
 
